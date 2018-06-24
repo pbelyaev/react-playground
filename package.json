@@ -2,8 +2,26 @@
   "name": "react-playground",
   "version": "0.0.1",
   "description": "Yet another React playground",
-  "main": "index.js",
   "author": "Pavel Belyaev",
   "license": "MIT",
-  "private": false
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pbelyaev/react-playground.git"
+  },
+  "scripts": {
+    "build": "webpack -c webpack.config.js"
+  },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8"
+  }
 }
