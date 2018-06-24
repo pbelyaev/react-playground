@@ -1,0 +1,9 @@
+{
+  "name": "react-playground",
+  "version": "0.0.1",
+  "description": "Yet another React playground",
+  "main": "index.js",
+  "author": "Pavel Belyaev",
+  "license": "MIT",
+  "private": false
+}
