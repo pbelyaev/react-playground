@@ -10,8 +10,8 @@
     "url": "git@github.com:pbelyaev/react-playground.git"
   },
   "scripts": {
-    "build": "webpack -c webpack.config.js",
-    "start:dev": "webpack-dev-server --hot"
+    "build": "webpack --mode production --config webpack.config.js",
+    "dev": "webpack-dev-server --mode development --hot --open"
   },
   "dependencies": {
     "react": "^16.4.1",
