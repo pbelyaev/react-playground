@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CartItemSection from '../styled/CartItem';
 
 class CartItem extends Component {
   render() {
     const totalPrice = this.props.price * this.props.quantity;
 
     return (
-      <div>
+      <CartItemSection>
           { totalPrice }
-      </div>
+      </CartItemSection>
     );
   }
 }

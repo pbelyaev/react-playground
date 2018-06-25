@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import CartSection from '../styled/Cart';
 import CartItem from './CartItem';
+import CartContainer from './../store/containers/CartContainer';
+import PropTypes from 'prop-types';
 
-export default class Cart extends Component {
-  constructor() {
-    super();
-    this.state = {
-      items: [
-        { id: 1, name: 'iPhone X', price: 999.00, quantity: 1 },
-        { id: 2, name: 'iPhone SE', price: 399.00, quantity: 6 },
-      ],
-    };
+class Cart extends Component {
+  componentWillMount() {
+    this.props.fetchCartItems();
   }
 
   render() {
     return (
-        <CartSection>
-            { this.state.items.map(item => <CartItem key={ item.id } { ...item } />) }
-        </CartSection>
+      <CartSection>
+        { this.props.cart.map(item => <CartItem key={ item.id } { ...item } />) }
+      </CartSection>
     );
   }
 }
+
+Cart.propTypes = {
+  fetchCartItems: PropTypes.func.isRequired,
+  cart: PropTypes.array.isRequired,
+};
+
+export default CartContainer(Cart);
