@@ -1,10 +1,16 @@
+// @flow
+
 import React, { Component } from 'react';
 import CartSection from '../styled/Cart';
 import CartItem from './CartItem';
 import CartContainer from './../store/containers/CartContainer';
-import PropTypes from 'prop-types';
 
-class Cart extends Component {
+type Props = {
+  fetchCartItems: Function,
+  cart: Array<Object>,
+};
+
+class Cart extends Component<Props> {
   componentDidMount() {
     this.props.fetchCartItems();
   }
@@ -17,10 +23,5 @@ class Cart extends Component {
     );
   }
 }
-
-Cart.propTypes = {
-  fetchCartItems: PropTypes.func.isRequired,
-  cart: PropTypes.array.isRequired,
-};
 
 export default CartContainer(Cart);

@@ -1,8 +1,16 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import CartItemSection from '../styled/CartItem';
 
-class CartItem extends Component {
+type Props = {
+  id: number,
+  name: string,
+  price: number,
+  quantity: number,
+};
+
+class CartItem extends Component<Props> {
   render() {
     const totalPrice = this.props.price * this.props.quantity;
 
@@ -13,12 +21,5 @@ class CartItem extends Component {
     );
   }
 }
-
-CartItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  quantity: PropTypes.number.isRequired,
-};
 
 export default CartItem;
