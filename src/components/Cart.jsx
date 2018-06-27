@@ -5,7 +5,7 @@ import CartContainer from './../store/containers/CartContainer';
 import PropTypes from 'prop-types';
 
 class Cart extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchCartItems();
   }
 
