@@ -9,7 +9,7 @@ module.exports = {
     compress: true,
   },
 
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.jsx'],
 
   output: {
     path: path.resolve(__dirname, 'public/js'),
@@ -24,14 +24,17 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules|packages/,
-        use: 'babel-loader',
+        include: /src/,
+        use: [
+          { loader: 'babel-loader' },
+          { loader: 'eslint-loader' },
+        ],
       },
     ],
   },
 
   plugins: [
-    new HtmlWebpackPlugin(), 
+    new HtmlWebpackPlugin(),
     new webpack.NamedModulesPlugin(),
   ],
 };

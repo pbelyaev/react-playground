@@ -1,15 +1,10 @@
-import { CHANGE_CART_ITEM_QUANTITY, ADD_CART_ITEM, FETCH_CART_ITEMS } from '../actionTypes';
-
-export const changeCartItemQuantity = (payload) => ({
-  type: CHANGE_CART_ITEM_QUANTITY,
-  ...payload,
-});
-
-export const addCartItem = (payload) => ({
-  type: ADD_CART_ITEM,
-  ...payload,
-});
+import { FETCH_CART_ITEMS, REMOVE_CART_ITEM } from "../actionTypes";
 
 export const fetchCartItems = () => ({
-  type: FETCH_CART_ITEMS,
+  type: FETCH_CART_ITEMS
+});
+
+export const removeCartItem = item => ({
+  type: REMOVE_CART_ITEM,
+  item
 });

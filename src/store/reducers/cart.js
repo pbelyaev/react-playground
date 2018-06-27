@@ -1,32 +1,22 @@
-import {
-  ADD_CART_ITEM, 
-  CHANGE_CART_ITEM_QUANTITY, 
-  REPLACE_CART_ITEMS,
-} from '../actionTypes';
+// @flow
 
-export const cart = (state = [], { type, ...payload }) => {
-  switch(type) {
-    case ADD_CART_ITEM:
-      return state.concat(payload);
+import { remove } from "ramda";
+import { REPLACE_CART_ITEMS, REMOVE_CART_ITEM } from "../actionTypes";
 
-    case CHANGE_CART_ITEM_QUANTITY:
-      return state.map(item => item.id === payload.id ? cartItem(item, { type, ...payload }) : item);
-    
-    case REPLACE_CART_ITEMS:
-      return payload.items;
-
-    default: 
-      return state;
-  }
+type State = Array<Object>;
+type Payload = {
+  type: string,
+  item?: Object,
+  items?: Array<Object>
 };
 
-export const cartItem = (state = {}, { type, ...payload }) => {
-  switch(type) {
-    case CHANGE_CART_ITEM_QUANTITY:
-      return {
-        ...state,
-        quantity: payload.quantity,
-      };
+export default (state: State = [], { type, ...payload }: Payload) => {
+  switch (type) {
+    case REMOVE_CART_ITEM:
+      return remove(state.indexOf(payload.item), 1, state);
+
+    case REPLACE_CART_ITEMS:
+      return payload.items;
 
     default:
       return state;

@@ -1,24 +1,39 @@
 // @flow
 
-import React, { Component } from 'react';
-import CartSection from '../styled/Cart';
-import CartItem from './CartItem';
-import CartContainer from './../store/containers/CartContainer';
+import React, { Component } from "react";
+import CartSection from "../styled/Cart";
+import CartItem from "./CartItem";
+import CartContainer from "../store/containers/CartContainer";
 
-type Props = {
+type CartProps = {
   fetchCartItems: Function,
-  cart: Array<Object>,
+  removeCartItem: Function,
+  cart: Array<Object>
 };
 
-class Cart extends Component<Props> {
+class Cart extends Component<CartProps> {
   componentDidMount() {
-    this.props.fetchCartItems();
+    const { fetchCartItems } = this.props;
+    fetchCartItems();
+  }
+
+  removeItem(cartItemId) {
+    const { cart, removeCartItem } = this.props;
+    const cartItem = cart.find(({ id }) => id === cartItemId);
+    removeCartItem(cartItem);
   }
 
   render() {
+    const { cart } = this.props;
     return (
       <CartSection>
-        { this.props.cart.map(item => <CartItem key={ item.id } { ...item } />) }
+        {cart.map(item => (
+          <CartItem
+            key={item.id}
+            {...item}
+            onRemove={() => this.removeItem()}
+          />
+        ))}
       </CartSection>
     );
   }

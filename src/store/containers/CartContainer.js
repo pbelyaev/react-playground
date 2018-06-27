@@ -1,20 +1,16 @@
-import { connect } from 'react-redux';
-import { changeCartItemQuantity, addCartItem, fetchCartItems } from '../actions/cart';
+import { connect } from "react-redux";
+import { fetchCartItems, removeCartItem } from "../actions/cart";
 
 export default connect(
   ({ cart }) => ({ cart }),
 
-  (dispatch) => ({
+  dispatch => ({
     fetchCartItems() {
       dispatch(fetchCartItems());
     },
 
-    changeCartItemQuantity(payload) {
-      dispatch(changeCartItemQuantity(payload));
-    },
-
-    addCartItem(payload) {
-      dispatch(addCartItem(payload));
-    },
-  }),
+    removeCartItem(item) {
+      dispatch(removeCartItem(item));
+    }
+  })
 );
