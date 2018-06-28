@@ -30,6 +30,15 @@ module.exports = {
           { loader: 'eslint-loader' },
         ],
       },
+      {
+        test: /\.scss$/,
+        include: /src/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
+        ],
+      },
     ],
   },
 

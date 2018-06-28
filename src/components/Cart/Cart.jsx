@@ -1,9 +1,8 @@
 // @flow
 
 import React, { Component } from "react";
-import CartSection from "../styled/Cart";
-import CartItem from "./CartItem";
-import CartContainer from "../store/containers/CartContainer";
+import CartItem from "../CartItem";
+import CartContainer from "../../store/containers/CartContainer";
 
 type CartProps = {
   fetchCartItems: Function,
@@ -26,7 +25,7 @@ class Cart extends Component<CartProps> {
   render() {
     const { cart } = this.props;
     return (
-      <CartSection>
+      <div className="cart">
         {cart.map(item => (
           <CartItem
             key={item.id}
@@ -34,7 +33,7 @@ class Cart extends Component<CartProps> {
             onRemove={() => this.removeItem()}
           />
         ))}
-      </CartSection>
+      </div>
     );
   }
 }
