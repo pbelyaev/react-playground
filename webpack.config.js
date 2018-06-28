@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   devServer: {
@@ -46,5 +47,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin(),
     new webpack.NamedModulesPlugin(),
+    new StyleLintPlugin(),
   ],
 };
