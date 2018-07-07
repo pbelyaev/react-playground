@@ -5,15 +5,16 @@ import { shallow } from "enzyme";
 import CartItem from "./CartItem";
 
 describe("CartItem Test Suite", () => {
+  const onRemoveMock = jest.fn();
   const wrapper = shallow(
-    <CartItem id={1} name="iPhone X" price={999.99} quantity={2} />
+    <CartItem id={1} name="iPhone X" price={999.99} quantity={2} onRemove={onRemoveMock} />
   );
 
-  it("should render without throwing an error", () => {
-    expect(wrapper.is(".cart-item")).toBe(true);
+  it("matches the snapshot", () => {
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it("should render the name of the cart item", () => {
+  it("renders name", () => {
     expect(
       wrapper
         .find(".cart-item__block")
@@ -22,7 +23,7 @@ describe("CartItem Test Suite", () => {
     ).toBe("iPhone X");
   });
 
-  it("should render the price of the cart item", () => {
+  it("renders price", () => {
     expect(
       wrapper
         .find(".cart-item__block")
@@ -31,7 +32,7 @@ describe("CartItem Test Suite", () => {
     ).toBe("$999.99");
   });
 
-  it("should render the quantity of the cart item", () => {
+  it("renders quantity", () => {
     expect(
       wrapper
         .find(".cart-item__block")
@@ -40,12 +41,18 @@ describe("CartItem Test Suite", () => {
     ).toBe("x2");
   });
 
-  it("should render the total price of the cart item", () => {
+  it("renders total price", () => {
     expect(
       wrapper
         .find(".cart-item__block")
         .at(3)
         .text()
     ).toBe("$1999.98");
+  });
+
+  it("calls `onRemove` callback on remove button click", () => {
+    wrapper.find('.cart-item__remove-button').simulate('click');
+    expect(onRemoveMock).toBeCalled();
+    expect(onRemoveMock).toBeCalledWith(1);
   });
 });
