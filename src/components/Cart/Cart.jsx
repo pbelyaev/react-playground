@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Component } from "react";
 import CartItem from "../CartItem";
 import CartContainer from "../../store/containers/CartContainer";
