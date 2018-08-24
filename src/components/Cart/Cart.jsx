@@ -1,7 +1,8 @@
 // @flow
-import React, { Component } from "react";
-import CartItem from "../CartItem";
+import React, { PureComponent, type Node } from "react";
+import {CartItem} from "../CartItem/CartItem";
 import CartContainer from "../../store/containers/CartContainer";
+import { CartWrapper } from "./helpers/CartWrapper";
 
 type CartProps = {
   fetchCartItems: Function,
@@ -9,7 +10,7 @@ type CartProps = {
   cart: Array<Object>
 };
 
-class Cart extends Component<CartProps> {
+export class Cart extends PureComponent<CartProps> {
   componentDidMount() {
     const { fetchCartItems } = this.props;
     fetchCartItems();
@@ -21,10 +22,10 @@ class Cart extends Component<CartProps> {
     removeCartItem(cartItem);
   }
 
-  render() {
+  render(): Node {
     const { cart } = this.props;
     return (
-      <div className="cart">
+      <CartWrapper>
         {cart.map(item => (
           <CartItem
             key={item.id}
@@ -32,9 +33,9 @@ class Cart extends Component<CartProps> {
             onRemove={() => this.removeItem()}
           />
         ))}
-      </div>
+      </CartWrapper>
     );
   }
 }
 
-export default CartContainer(Cart);
+export const CartContainerConnected = CartContainer(Cart);

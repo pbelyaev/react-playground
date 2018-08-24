@@ -1,17 +1,15 @@
 // @flow
-import React from "react";
+import React, { type Node } from "react";
 import { Provider } from "react-redux";
 import store from "../../store";
-import Cart from "../Cart";
+import {CartContainerConnected} from "../Cart/Cart";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <div className="app">
-        <Cart />
-      </div>
-    </Provider>
-  );
-}
+import {AppContainer} from "./helpers/AppContainer";
 
-export default App;
+export const App = (): Node => (
+  <Provider store={store}>
+    <AppContainer>
+      <CartContainerConnected />
+    </AppContainer>
+  </Provider>
+);

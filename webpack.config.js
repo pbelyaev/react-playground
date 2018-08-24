@@ -31,22 +31,12 @@ module.exports = {
           { loader: 'eslint-loader' },
         ],
       },
-      {
-        test: /\.scss$/,
-        include: /src/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'postcss-loader', options: { importLoaders: 1 } },
-          { loader: 'sass-loader' },
-        ],
-      },
     ],
   },
 
   plugins: [
     new HtmlWebpackPlugin(),
     new webpack.NamedModulesPlugin(),
-    new StyleLintPlugin(),
+    new StyleLintPlugin({files: ['src/**/*.js', 'src/**/*.jsx']}),
   ],
 };

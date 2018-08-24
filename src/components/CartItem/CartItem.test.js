@@ -2,7 +2,7 @@
 /* eslint-disable */
 import React from "react";
 import { shallow } from "enzyme";
-import CartItem from "./CartItem";
+import {CartItem} from "./CartItem";
 
 describe("CartItem Test Suite", () => {
   const onRemoveMock = jest.fn();
@@ -17,8 +17,9 @@ describe("CartItem Test Suite", () => {
   it("renders name", () => {
     expect(
       wrapper
-        .find(".cart-item__block")
+        .find("CartItemBlock")
         .at(0)
+        .render()
         .text()
     ).toBe("iPhone X");
   });
@@ -26,8 +27,9 @@ describe("CartItem Test Suite", () => {
   it("renders price", () => {
     expect(
       wrapper
-        .find(".cart-item__block")
+        .find("CartItemBlock")
         .at(1)
+        .render()
         .text()
     ).toBe("$999.99");
   });
@@ -35,8 +37,9 @@ describe("CartItem Test Suite", () => {
   it("renders quantity", () => {
     expect(
       wrapper
-        .find(".cart-item__block")
+        .find("CartItemBlock")
         .at(2)
+        .render()
         .text()
     ).toBe("x2");
   });
@@ -44,14 +47,15 @@ describe("CartItem Test Suite", () => {
   it("renders total price", () => {
     expect(
       wrapper
-        .find(".cart-item__block")
+        .find("CartItemBlock")
         .at(3)
+        .render()
         .text()
     ).toBe("$1999.98");
   });
 
   it("calls `onRemove` callback on remove button click", () => {
-    wrapper.find('.cart-item__remove-button').simulate('click');
+    wrapper.find('button').simulate('click');
     expect(onRemoveMock).toBeCalled();
     expect(onRemoveMock).toBeCalledWith(1);
   });

@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CartItem Test Suite matches the snapshot 1`] = `"<div class=\\"cart-item\\"><div class=\\"cart-item__block\\">iPhone X</div><div class=\\"cart-item__block\\">$999.99</div><div class=\\"cart-item__block\\">x2</div><div class=\\"cart-item__block\\">$1999.98</div><div class=\\"cart-item__block\\"><button type=\\"button\\" class=\\"cart-item__remove-button\\">Remove</button></div></div>"`;
+exports[`CartItem Test Suite matches the snapshot 1`] = `"<div class=\\"CartItemWrapper-kMZqWe kUcNLL\\"><div class=\\"CartItemBlock-itbsVk jNsRUN\\">iPhone X</div><div class=\\"CartItemBlock-itbsVk jNsRUN\\">$999.99</div><div class=\\"CartItemBlock-itbsVk jNsRUN\\">x2</div><div class=\\"CartItemBlock-itbsVk jNsRUN\\">$1999.98</div><div class=\\"CartItemBlock-itbsVk jNsRUN\\"><button type=\\"button\\">Remove</button></div></div>"`;
